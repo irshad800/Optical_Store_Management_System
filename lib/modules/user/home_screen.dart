@@ -88,7 +88,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                       ),
                       items: [
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-qrr9hN7mx4PugAh4vLAkACdDBSjbs3NFgA&usqp=CAU',
-
                       ].map((i) {
                         return Builder(
                           builder: (BuildContext context) {

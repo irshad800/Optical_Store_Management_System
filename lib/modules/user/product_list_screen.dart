@@ -150,20 +150,16 @@ class _ProductListNewState extends State<ProductListNew> {
                                             ),
                                           ],
                                         ),
-                                        child: 
-                                        
-                                         CustomButton(
+                                        child: CustomButton(
                                           text: 'Add',
                                           onPressed: () async {
+                                            print(DbService.getLoginId());
 
-                                           print(DbService.getLoginId());
-                                           
                                             await ApiServiece().addToCart(
                                                 context,
                                                 DbService.getLoginId()!,
                                                 product['_id'],
                                                 product['price'].toString());
-                                            
                                           },
                                         ),
                                       ),

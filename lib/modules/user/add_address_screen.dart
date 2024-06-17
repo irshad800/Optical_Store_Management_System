@@ -71,7 +71,9 @@ class _UserAddAddressScreenState extends State<UserAddAddressScreen> {
                   borderColor: Colors.grey.shade300,
                   validator: (value) => fieldValidate(value, 'name'),
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 CustomTextField(
                   hintText: 'Enter Address',
                   controller: _addressController,
@@ -99,7 +101,6 @@ class _UserAddAddressScreenState extends State<UserAddAddressScreen> {
                   hintText: 'Enter land mark',
                   controller: _landmarkController,
                   validator: (value) => fieldValidate(value, 'land mark'),
-                 
                   borderColor: Colors.grey.shade300,
                 ),
                 const SizedBox(height: 30),
@@ -107,15 +108,15 @@ class _UserAddAddressScreenState extends State<UserAddAddressScreen> {
                   hintText: 'Enter state',
                   controller: _stateController,
                   validator: (value) => fieldValidate(value, 'land state'),
-                 
                   borderColor: Colors.grey.shade300,
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 CustomTextField(
                   hintText: 'Enter phone',
                   controller: _phoneControllers,
                   validator: (value) => fieldValidate(value, 'land mark'),
-                 
                   borderColor: Colors.grey.shade300,
                 ),
                 const SizedBox(height: 30),

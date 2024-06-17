@@ -40,11 +40,11 @@ class DoctorListScreen extends StatelessWidget {
                     subtitle: Text(doctor['email']),
                     trailing: CustomButton(
                       onPressed: () {
-
-
-
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  BookEyeSpecialist(docId: doctor['login_id'])));
-                      
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookEyeSpecialist(
+                                    docId: doctor['login_id'])));
                       },
                       text: 'Book Now',
                     ),

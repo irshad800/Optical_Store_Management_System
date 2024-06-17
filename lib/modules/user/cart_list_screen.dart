@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:opticals/modules/user/user_check_out_screen.dart';
 
 import '../../service/api_services.dart';
@@ -22,45 +21,23 @@ class _UserCartListScreenState extends State<UserCartListScreen> {
     _cartItems = ApiServiece().fetchCartItems(DbService.getLoginId()!);
     getData();
 
-
     super.initState();
   }
 
   double total = 0;
 
-  getData() async{
+  getData() async {
+    List cartitemsList =
+        await ApiServiece().fetchCartItems(DbService.getLoginId()!);
 
-    
+    cartitemsList.forEach((element) {
+      total = double.parse(element['subtotal'].toString()) + total;
 
-    List  cartitemsList = await ApiServiece().fetchCartItems(DbService.getLoginId()!);
-   
-   cartitemsList.forEach((element) {
-
-    total =  double.parse(element['subtotal'].toString()) + total;
-
-    setState(() {
-      
+      setState(() {});
     });
-    
-
-   });
-
-    
-
   }
 
-
-
   int qty = 0;
-
-  
-
-  
-
-  
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +83,9 @@ class _UserCartListScreenState extends State<UserCartListScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CheckOut(total: total,),
+                      builder: (context) => CheckOut(
+                        total: total,
+                      ),
                     ),
                   );
                 },
@@ -123,15 +102,7 @@ class _UserCartListScreenState extends State<UserCartListScreen> {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-
-            
             final cartItems = snapshot.data!;
-
-
-
-
-            
-              
 
             return ListView.builder(
               itemCount: cartItems.length,
@@ -139,13 +110,11 @@ class _UserCartListScreenState extends State<UserCartListScreen> {
                 final item = cartItems[index];
 
                 qty = item['quantity'];
-                 
-                
+
                 return ItemCard(
                   name: item['brand'],
                   imageUrl: item['image'],
                   quantity: qty,
-                  
                 );
               },
             );

@@ -15,9 +15,9 @@ class UserProfileScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
 
-
   Future<Map<String, dynamic>> _fetchUserData() async {
-    final response = await http.get(Uri.parse('${ApiServiece.baseUrl}/api/profile/user/${DbService.getLoginId()!}'));
+    final response = await http.get(Uri.parse(
+        '${ApiServiece.baseUrl}/api/profile/user/${DbService.getLoginId()!}'));
     print(response.body);
 
     if (response.statusCode == 200) {
@@ -39,8 +39,8 @@ class UserProfileScreen extends StatelessWidget {
         } else {
           final userData = snapshot.data!;
           _nameController.text = userData['name'];
-          _emailController.text= userData['email'];
-          _phoneController.text=userData['phone'];
+          _emailController.text = userData['email'];
+          _phoneController.text = userData['phone'];
           // You can similarly assign other user data to respective fields
 
           return Center(
@@ -53,7 +53,11 @@ class UserProfileScreen extends StatelessWidget {
                     Text('logout'),
                     IconButton(
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()),
+                            (route) => false);
                       },
                       icon: Icon(Icons.logout),
                     )
@@ -95,26 +99,25 @@ class UserProfileScreen extends StatelessWidget {
                   ),
                 ),
 
-
                 const SizedBox(height: 20),
                 // Similar CustomTextField widgets for other user data (email, phone, etc.)
                 SizedBox(height: 30),
                 //Container(
-                  //padding: const EdgeInsets.symmetric(horizontal: 10),
-                  //width: MediaQuery.of(context).size.width,
-                  //child: CustomButton(
-                    //text: 'Edit',
-                    //color: Colors.teal,
-                    //onPressed: () {
-                      //Navigator.push(
-                        //context,
-                        //MaterialPageRoute(
-                          //builder: (context) => UserEditProfileScreen(),
-                        //),
-                      //);
-                    //},
-                 // ),
-               // )
+                //padding: const EdgeInsets.symmetric(horizontal: 10),
+                //width: MediaQuery.of(context).size.width,
+                //child: CustomButton(
+                //text: 'Edit',
+                //color: Colors.teal,
+                //onPressed: () {
+                //Navigator.push(
+                //context,
+                //MaterialPageRoute(
+                //builder: (context) => UserEditProfileScreen(),
+                //),
+                //);
+                //},
+                // ),
+                // )
               ],
             ),
           );

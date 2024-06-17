@@ -6,10 +6,9 @@ import '../../utils/constants.dart';
 import '../../widgets/custom_button.dart';
 import 'add_address_screen.dart';
 
-
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key, required this.total});
-  final  total;
+  final total;
   @override
   State<CheckOut> createState() => _CheckOutState();
 }
@@ -22,7 +21,6 @@ class _CheckOutState extends State<CheckOut> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: KButtonColor,
@@ -90,51 +88,43 @@ class _CheckOutState extends State<CheckOut> {
                           ],
                         ),
 
-                      isPaid ?
-                        Text(
-                        'payment  :   complete') :
+                      isPaid
+                          ? Text('payment  :   complete')
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Payement',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey.shade800),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                CustomButton(
+                                  text: 'select',
+                                  onPressed: () async {
+                                    isPaid = await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const PaymentScreen(),
+                                        ));
 
-
-                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Payement',
-                              style: TextStyle(
-                                  fontSize: 12, color: Colors.grey.shade800),
+                                    if (isPaid) {
+                                      setState(() {});
+                                    }
+                                  },
+                                )
+                              ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            CustomButton(
-                              text: 'select',
-                              onPressed: () async {
-                                isPaid = await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PaymentScreen(),
-                                    ));
-                               
-                                if (isPaid) {
-                                  setState(() {});
-                                }
-                              },
-                            )
-                          ],
-                        ),
-
-
-                      
 
                       const SizedBox(
                         height: 15,
                       ),
                       RichText(
-                        text: TextSpan(children: [
-
-
-                        ]),
+                        text: TextSpan(children: []),
                       ),
                       const SizedBox(
                         height: 16,
@@ -174,7 +164,6 @@ class _CheckOutState extends State<CheckOut> {
                                 SizedBox(
                                   height: 5,
                                 ),
-                                
                               ],
                             ),
                           ],
@@ -271,7 +260,7 @@ class _CheckOutState extends State<CheckOut> {
                                     ],
                                   ),
                                 ),
-                              
+
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 0, vertical: 3),
@@ -339,7 +328,6 @@ class _CheckOutState extends State<CheckOut> {
                                       style: TextStyle(
                                           color: Colors.teal, fontSize: 13),
                                     ),
-
                                   ],
                                 ),
 

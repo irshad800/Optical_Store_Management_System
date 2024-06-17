@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
 
-
-
 class CardWidget extends StatelessWidget {
   final IconData iconData;
   final String title;
   final VoidCallback onTap;
   final double? padding;
 
-  final Widget ? child;
+  final Widget? child;
 
   const CardWidget({
     super.key,
@@ -18,7 +16,7 @@ class CardWidget extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.padding,
-     this.child,
+    this.child,
   });
 
   @override
@@ -36,14 +34,14 @@ class CardWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              child ?? Icon(
-                iconData,
-                size: 40.0,
-                color: Colors.white,
-              ),
+              child ??
+                  Icon(
+                    iconData,
+                    size: 40.0,
+                    color: Colors.white,
+                  ),
               const SizedBox(height: 15.0),
               Text(
-
                 title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,7 +8,6 @@ import '../../service/db_service.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 import 'doctor_booking_confirmation.dart';
-
 
 class BookServiceScreen extends StatefulWidget {
   const BookServiceScreen({super.key});
@@ -185,7 +183,7 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-               
+
                 const Text(
                   'Complaint',
                   style: TextStyle(color: Colors.black, fontSize: 16),
@@ -208,29 +206,25 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
     );
   }
 
-  _submit() async{
-
+  _submit() async {
     setState(() {
       loading = true;
     });
 
-
     final date = DateFormat('dd-MM-yyyy').format(newDateTime!);
-   await ApiServiece()
-        .bookService(
-          context, 
-          DbService.getLoginId()!, 
-          date, 
-          _description.text,
-
-          );
-    if(context.mounted){
-      Navigator.push(
+    await ApiServiece().bookService(
       context,
-      MaterialPageRoute(
-        builder: (context) => const DoctorBookingConfirmScreen(),
-      ),
+      DbService.getLoginId()!,
+      date,
+      _description.text,
     );
+    if (context.mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const DoctorBookingConfirmScreen(),
+        ),
+      );
     }
     setState(() {
       loading = false;

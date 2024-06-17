@@ -23,7 +23,7 @@ class _BookEyeSpecialistState extends State<BookEyeSpecialist> {
 
   DateTime? newDateTime;
 
-  bool loading =  false;
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -96,15 +96,21 @@ class _BookEyeSpecialistState extends State<BookEyeSpecialist> {
                 const SizedBox(
                   height: 20,
                 ),
-                loading ?  Center(child: CircularProgressIndicator(color: Colors.teal,),)  : SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: CustomButton(
-                    text: 'Submit',
-                    onPressed: () {
-                      _submit();
-                    },
-                  ),
-                ),
+                loading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.teal,
+                        ),
+                      )
+                    : SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: CustomButton(
+                          text: 'Submit',
+                          onPressed: () {
+                            _submit();
+                          },
+                        ),
+                      ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -116,28 +122,18 @@ class _BookEyeSpecialistState extends State<BookEyeSpecialist> {
     );
   }
 
-  _submit() async{
-
+  _submit() async {
     setState(() {
       loading = true;
     });
 
-    String date =  DateFormat('dd-MM-yyyy').format(newDateTime!);
+    String date = DateFormat('dd-MM-yyyy').format(newDateTime!);
 
-    
+    await ApiServiece().bookDoctor(context, widget.docId, date);
 
-    
-
-    await ApiServiece().bookDoctor(
-      context,
-      widget.docId,
-      date
-      );
-
-      setState(() {
+    setState(() {
       loading = false;
     });
-
 
     Navigator.push(
       context,
